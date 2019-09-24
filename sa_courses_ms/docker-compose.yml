@@ -1,7 +1,7 @@
 version: "2"
 services:
  courses-ms:
-  build: .
+  image: jdrodriguezrui/lab2:test
   ports:
    - "3000:3000"
   depends_on:
