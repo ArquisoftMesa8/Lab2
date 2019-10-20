@@ -30,6 +30,8 @@ paths:
       responses:
         '201':
           description: Created
+          schema:
+            $ref: '#/definitions/Course'
         '400':
           description: Bad Request
           schema:
@@ -75,9 +77,9 @@ paths:
           schema:
             $ref: '#/definitions/ErrorModel'
         '406':
-            description: Not Acceptable (Invalid Params)
-            schema:
-              $ref: '#/definitions/ErrorModel'
+          description: Not Acceptable (Invalid Params)
+          schema:
+            $ref: '#/definitions/ErrorModel'
         '500':
           description: unexpected error
           schema:
@@ -99,16 +101,18 @@ paths:
           schema:
             $ref: '#/definitions/CourseInput'
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/Course'
         '404':
           description: Not Found
           schema:
             $ref: '#/definitions/ErrorModel'
         '406':
-            description: Not Acceptable (Invalid Params)
-            schema:
-              $ref: '#/definitions/ErrorModel'
+          description: Not Acceptable (Invalid Params)
+          schema:
+            $ref: '#/definitions/ErrorModel'
         '500':
           description: unexpected error
           schema:
@@ -126,14 +130,16 @@ paths:
       responses:
         '200':
           description: Ok
+          schema:
+            $ref: '#/definitions/CourseCode'
         '404':
           description: Not Found
           schema:
             $ref: '#/definitions/ErrorModel'
         '406':
-            description: Not Acceptable (Invalid Params)
-            schema:
-              $ref: '#/definitions/ErrorModel'
+          description: Not Acceptable (Invalid Params)
+          schema:
+            $ref: '#/definitions/ErrorModel'
         '500':
           description: unexpected error
           schema:
@@ -151,6 +157,8 @@ definitions:
         type: string
       credits:
         type: integer
+      professor:
+        type: string
 
   CourseInput:
     type: object
@@ -159,6 +167,8 @@ definitions:
         type: string
       credits:
         type: integer
+      professor:
+        type: string
 
   CoursesList:
     type: object
@@ -172,7 +182,13 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/Course'
-
+  
+  CourseCode:
+    type: object
+    properties:
+      code:
+        type: integer
+        
 # Errors
   ErrorModel:
     type: object

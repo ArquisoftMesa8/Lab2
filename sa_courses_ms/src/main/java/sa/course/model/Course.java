@@ -15,6 +15,7 @@ public class Course {
 
     private String name;
     private Long credits;
+    private String professor;
 
     public Long getCode() {
         return code;
@@ -35,5 +36,12 @@ public class Course {
     }
     public void setCredits(Long credits) {
         this.credits = credits;
+    }
+
+    public String getProfessor() {
+        return professor;
+    }
+    public void setProfessor(String professor) {
+        this.professor = professor;
     }
 }

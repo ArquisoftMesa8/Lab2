@@ -1,17 +1,18 @@
-version: "2"
+version: '2'
 services:
- courses-ms:
-  image: jdrodriguezrui/lab2:test
-  ports:
-   - "3000:3000"
-  depends_on:
-   - courses-db
- courses-db:
-  image: mysql:5.7
-  environment:
-   MYSQL_ROOT_PASSWORD: 123
-   MYSQL_DATABASE: courses-db
-   MYSQL_USER: sa
-   MYSQL_PASSWORD: 123
-  ports:
-   - "3306:3306"
+  courses-db:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: courses-db
+      MYSQL_PASSWORD: '123'
+      MYSQL_ROOT_PASSWORD: '123'
+      MYSQL_USER: sa
+    ports:
+    - 3306:3306/tcp
+  courses-ms:
+    build: .
+    ports:
+    - 3000:3000/tcp
+    depends_on: 
+    - courses-db
+      
