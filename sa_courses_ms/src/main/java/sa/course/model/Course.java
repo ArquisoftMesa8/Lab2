@@ -41,7 +41,7 @@ public class Course {
     public String getProfessor() {
         return professor;
     }
-    public void setProfessor(String professor) {
+    public void setProfessor() {
         this.professor = professor;
     }
 }

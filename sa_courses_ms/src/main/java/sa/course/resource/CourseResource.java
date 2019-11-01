@@ -8,15 +8,11 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
-import javax.ws.rs.core.Response.ResponseBuilder;
-import javax.persistence.Entity;
 import java.net.URI;
 import java.util.List;
 
 @Path("/courses")
 public class CourseResource {
-
-    ResponseBuilder response;
 
     @Context
     UriInfo uriInfo;
@@ -31,37 +27,28 @@ public class CourseResource {
 
     @GET
     @Path("{code}")
-    public Response getCourseByCode(@PathParam("code") long code) {
-        Course course = courseService.getCourseByCode(code);
-        response = Response.status(Response.Status.OK);
-        response.entity(course);
-        return response.build();
+    public Course getCourseByCode(@PathParam("code") long code) {
+        return courseService.getCourseByCode(code);
     }
 
     @POST
     public Response createCourse(Course course) {
-        Course createdCourse = courseService.createCourse(course);
-        response = Response.status(Response.Status.CREATED);
-        response.entity(createdCourse);
-        return response.build();
+        courseService.createCourse(course);
+        return Response.status(Response.Status.CREATED).build();
     }
 
     @PUT
     @Path("{code}")
     public Response updateCourse(@PathParam("code") long code, Course course) {
-        Course updatedCourse = courseService.updateCourse(code, course);
-        response = Response.status(Response.Status.OK);
-        response.entity(updatedCourse);
-        return response.build();
+        courseService.updateCourse(code, course);
+        return Response.status(Response.Status.NO_CONTENT).build();
     }
 
     @DELETE
     @Path("{code}")
     public Response deleteCourse(@PathParam("code") long code) {
-        long deletedCourseCode = courseService.deleteCourse(code);
-        response = Response.status(Response.Status.OK);
-        response.entity(deletedCourseCode);
-        return response.build();
+        courseService.deleteCourse(code);
+        return Response.status(Response.Status.OK).build();
     }
 
 }

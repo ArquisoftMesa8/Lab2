@@ -6,7 +6,7 @@ info:
   title: Microservice for Courses
   description: Java + MySQL
   license:
-    name: Software Architecture 2018-II
+    name: Software Architecture 2019-II
 host: 192.168.99.101:3000
 basePath: /courses-ms/resources
 schemes:
@@ -30,8 +30,6 @@ paths:
       responses:
         '201':
           description: Created
-          schema:
-            $ref: '#/definitions/Course'
         '400':
           description: Bad Request
           schema:
@@ -77,9 +75,9 @@ paths:
           schema:
             $ref: '#/definitions/ErrorModel'
         '406':
-          description: Not Acceptable (Invalid Params)
-          schema:
-            $ref: '#/definitions/ErrorModel'
+            description: Not Acceptable (Invalid Params)
+            schema:
+              $ref: '#/definitions/ErrorModel'
         '500':
           description: unexpected error
           schema:
@@ -101,18 +99,16 @@ paths:
           schema:
             $ref: '#/definitions/CourseInput'
       responses:
-        '200':
-          description: Ok
-          schema:
-            $ref: '#/definitions/Course'
+        '204':
+          description: No Content
         '404':
           description: Not Found
           schema:
             $ref: '#/definitions/ErrorModel'
         '406':
-          description: Not Acceptable (Invalid Params)
-          schema:
-            $ref: '#/definitions/ErrorModel'
+            description: Not Acceptable (Invalid Params)
+            schema:
+              $ref: '#/definitions/ErrorModel'
         '500':
           description: unexpected error
           schema:
@@ -130,16 +126,14 @@ paths:
       responses:
         '200':
           description: Ok
-          schema:
-            $ref: '#/definitions/CourseCode'
         '404':
           description: Not Found
           schema:
             $ref: '#/definitions/ErrorModel'
         '406':
-          description: Not Acceptable (Invalid Params)
-          schema:
-            $ref: '#/definitions/ErrorModel'
+            description: Not Acceptable (Invalid Params)
+            schema:
+              $ref: '#/definitions/ErrorModel'
         '500':
           description: unexpected error
           schema:
@@ -182,13 +176,7 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/Course'
-  
-  CourseCode:
-    type: object
-    properties:
-      code:
-        type: integer
-        
+
 # Errors
   ErrorModel:
     type: object
